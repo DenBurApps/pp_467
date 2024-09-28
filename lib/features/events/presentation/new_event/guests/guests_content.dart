@@ -34,7 +34,7 @@ class _GuestsContentState extends State<GuestsContent> {
           SliverList.separated(
             itemCount: inherited.guests.length,
             itemBuilder: (context, index) {
-              final guest = inherited.guests.reversed.toList()[index];
+              final guest = inherited.guests[index];
               return GuestFormEntry(
                 guest: guest,
                 guestList: inherited.guests,

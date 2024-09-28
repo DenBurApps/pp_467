@@ -34,7 +34,7 @@ class _BudgetContentState extends State<BudgetContent> {
           SliverList.separated(
             itemCount: inherited.expenses.length,
             itemBuilder: (context, index) {
-              final expense = inherited.expenses.reversed.toList()[index];
+              final expense = inherited.expenses[index];
               return ExpenseFormEntry(
                 key: ValueKey(index),
                 expense: expense,

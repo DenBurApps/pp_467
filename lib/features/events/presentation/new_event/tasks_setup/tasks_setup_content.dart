@@ -13,6 +13,7 @@ import 'package:uuid/v4.dart';
 class TasksSetupContent extends StatefulWidget {
   final String submitButtonTitle;
   final VoidCallback submitButtonCallback;
+
   const TasksSetupContent({
     super.key,
     required this.submitButtonTitle,
@@ -28,22 +29,27 @@ class _TasksSetupContentState extends State<TasksSetupContent> {
   Widget build(BuildContext context) {
     final inherited = TasksSetupInheritedWidget.of(context);
     if (inherited == null) return const SizedBox.shrink();
+
     return Section(
       child: CustomScrollView(
         slivers: [
           SliverList.separated(
             itemCount: inherited.subtasks.length,
             itemBuilder: (context, index) {
-              final subtask = inherited.subtasks.reversed.toList()[index];
+              final subtask = inherited.subtasks[index];
               return SubtaskFormEntry(
                 subtask: subtask,
                 subtaskList: inherited.subtasks,
-                onUpdated: (newSubtask) => setState(
-                  () => inherited.subtasks[index] = newSubtask,
-                ),
-                onDeleted: () => setState(
-                  () => inherited.subtasks.remove(subtask),
-                ),
+                onUpdated: (newSubtask) {
+                  setState(() {
+                    inherited.subtasks[index] = newSubtask;
+                  });
+                },
+                onDeleted: () {
+                  setState(() {
+                    inherited.subtasks.removeAt(index);
+                  });
+                },
               );
             },
             separatorBuilder: (context, index) => Divider(
@@ -61,16 +67,16 @@ class _TasksSetupContentState extends State<TasksSetupContent> {
                   Assets.icons.addRounded,
                   side: 34,
                 ),
-                onPressed: () => setState(
-                  () => inherited.subtasks.add(
-                    Subtask(
+                onPressed: () {
+                  setState(() {
+                    inherited.subtasks.add(Subtask(
                       uuid: const UuidV4().generate(),
                       title: '',
                       description: '',
                       done: false,
-                    ),
-                  ),
-                ),
+                    ));
+                  });
+                },
               ),
             ),
           ),
@@ -83,12 +89,10 @@ class _TasksSetupContentState extends State<TasksSetupContent> {
                 child: CustomButton.title(
                   title: widget.submitButtonTitle,
                   onPressed: widget.submitButtonCallback,
-                  active: inherited.subtasks
-                      .where((e) =>
-                          e.title.isEmpty ||
-                          e.date == null ||
-                          e.priority == null)
-                      .isEmpty,
+                  active: inherited.subtasks.every((e) =>
+                      e.title.isNotEmpty &&
+                      e.date != null &&
+                      e.priority != null),
                   color: context.colors.primary,
                 ),
               ),

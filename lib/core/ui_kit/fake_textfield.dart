@@ -11,7 +11,7 @@ class FakeTextfield extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Align(
@@ -19,7 +19,9 @@ class FakeTextfield extends StatelessWidget {
         child: Text(
           text,
           style: context.text.bodyMedium.copyWith(
-            color: inactive ? Colors.black : null,
+            color: inactive
+                ? context.colors.surfaceBright
+                : context.colors.onSurface,
           ),
         ),
       ),

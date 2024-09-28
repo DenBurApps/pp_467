@@ -267,7 +267,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
                           children: {
                             for (final e in OpenEventSegment.values)
                               e: AnimatedDefaultTextStyle(
-                                style: context.text.bodyMedium!.copyWith(
+                                style: context.text.bodyMedium.copyWith(
                                   color: _selectedSegment == e
                                       ? context.colors.surface
                                       : context.colors.onSurface,

@@ -14,7 +14,7 @@ class TermsOfUseScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leadingWidth: 30 + 20 + 20 + 20,
-        leading: BackButton(),
+        leading: const BackButton(),
         title: Text(
           'Terms of Use',
           style: context.text.displaySmall,

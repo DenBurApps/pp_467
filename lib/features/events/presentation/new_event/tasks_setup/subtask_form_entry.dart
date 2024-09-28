@@ -81,7 +81,7 @@ class _SubtaskFormEntryState extends State<SubtaskFormEntry> {
                 onPressed: widget.onDeleted,
                 child: Text(
                   'Remove',
-                  style: context.text.bodyMedium!.copyWith(
+                  style: context.text.bodyMedium.copyWith(
                     color: context.colors.primary,
                   ),
                 ),
@@ -189,10 +189,10 @@ class _SubtaskFormEntryState extends State<SubtaskFormEntry> {
                           ),
                           child: Text(
                             e.name.capitalize(),
-                            style: context.text.bodyMedium!.copyWith(
+                            style: context.text.bodyMedium.copyWith(
                               color: _priority == e
                                   ? context.colors.onPrimary
-                                  : null,
+                                  : context.colors.onSurface,
                             ),
                           ),
                         ),

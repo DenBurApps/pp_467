@@ -72,7 +72,7 @@ class _ExpenseFormEntryState extends State<ExpenseFormEntry> {
                 onPressed: widget.onDeleted,
                 child: Text(
                   'Remove',
-                  style: context.text.bodyMedium!.copyWith(
+                  style: context.text.bodyMedium.copyWith(
                     color: context.colors.primary,
                   ),
                 ),

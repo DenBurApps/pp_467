@@ -14,7 +14,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leadingWidth: 30 + 20 + 20 + 20,
-        leading: BackButton(),
+        leading: const BackButton(),
         title: Text(
           'Privacy Policy',
           style: context.text.displaySmall,

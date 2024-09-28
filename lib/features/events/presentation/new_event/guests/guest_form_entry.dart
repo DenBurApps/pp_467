@@ -74,7 +74,7 @@ class _GuestFormEntryState extends State<GuestFormEntry> {
                     onPressed: widget.onDeleted,
                     child: Text(
                       'Remove',
-                      style: context.text.bodyMedium!.copyWith(
+                      style: context.text.bodyMedium.copyWith(
                         color: context.colors.primary,
                       ),
                     ),

@@ -63,7 +63,9 @@ class PhotoContent extends StatelessWidget {
                               const SizedBox(width: 10),
                               Text(
                                 'Add photo',
-                                style: context.text.bodyMedium,
+                                style: context.text.bodyMedium.copyWith(
+                                  color: context.colors.onSurface,
+                                ),
                               ),
                             ],
                           )

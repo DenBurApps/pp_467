@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:pp_467/core/extensions/theme_context_extension.dart';
 import 'package:pp_467/core/ui_kit/custom_button.dart';
 
@@ -32,7 +31,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.surface,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(16),
         ),

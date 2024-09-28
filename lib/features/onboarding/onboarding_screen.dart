@@ -27,7 +27,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final onboardingPages = <Widget>[
       Section(
         child: Column(

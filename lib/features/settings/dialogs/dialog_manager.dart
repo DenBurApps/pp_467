@@ -4,7 +4,6 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:pp_467/core/extensions/theme_context_extension.dart';
 
 import '../../../config/router/router.dart';
 import 'contact_dialog.dart';

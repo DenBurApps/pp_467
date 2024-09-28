@@ -7,7 +7,6 @@ import 'package:pp_467/core/extensions/datetime_extension.dart';
 import 'package:pp_467/core/extensions/theme_context_extension.dart';
 import 'package:pp_467/core/helpers/format_helper.dart';
 import 'package:pp_467/core/ui_kit/app_background.dart';
-import 'package:pp_467/core/ui_kit/custom_date_picker.dart';
 import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';

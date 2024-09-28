@@ -1,18 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pp_467/core/extensions/theme_context_extension.dart';
 import 'package:pp_467/core/ui_kit/custom_back_button.dart';
-import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:pp_467/features/events/domain/entities/expense/expense.dart';
 import 'package:pp_467/features/events/domain/entities/guest/guest.dart';
 import 'package:pp_467/features/events/domain/entities/subtask/subtask.dart';
 import 'package:pp_467/features/events/domain/st_mgmt/event_cubit.dart';
-import 'package:pp_467/features/events/presentation/home_screen.dart';
 import 'package:pp_467/features/events/presentation/new_event/budget/budget_content.dart';
 import 'package:pp_467/features/events/presentation/new_event/budget/budget_inh_widget.dart';
 import 'package:pp_467/features/events/presentation/new_event/guests/guests_content.dart';
@@ -47,11 +44,30 @@ class _NewEventScreenState extends State<NewEventScreen> {
 
   XFile? _image;
 
-  final List<Subtask> _subtasks = [];
+  final List<Subtask> _subtasks = [
+    Subtask(
+      uuid: const UuidV4().generate(),
+      title: '',
+      description: '',
+      done: false,
+    ),
+  ];
 
-  final List<Guest> _guests = [];
+  final List<Guest> _guests = [
+    Guest(
+      uuid: const UuidV4().generate(),
+      name: '',
+      contacts: '',
+    ),
+  ];
 
-  final List<Expense> _expenses = [];
+  final List<Expense> _expenses = [
+    Expense(
+      uuid: const UuidV4().generate(),
+      name: '',
+      amount: null,
+    ),
+  ];
 
   @override
   void initState() {
@@ -214,6 +230,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                                       event: event,
                                       image: _image,
                                     );
+                                context.router.popForced();
                               },
                             ),
                           ],
