@@ -20,7 +20,10 @@ class EditOrDeleteButton extends StatelessWidget {
       itemBuilder: (context) => [
         PullDownMenuItem(
           title: 'Edit',
-          iconWidget: SvgIcon(Assets.icons.edit),
+          iconWidget: SvgIcon(
+            Assets.icons.edit,
+            color: context.colors.onSurface,
+          ),
           onTap: onUpdateRequested,
         ),
         PullDownMenuItem(
@@ -43,6 +46,7 @@ class EditOrDeleteButton extends StatelessWidget {
         child: SvgIcon(
           Assets.icons.more,
           color: context.colors.onSurface,
+          side: 20,
         ),
       ),
     );

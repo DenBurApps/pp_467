@@ -73,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }) async {
     final router = context.router;
     await IsFirstRun.isFirstRun().then(
-      (isFirstRun) async {
+      (isFirstRun) {
         if (isFirstRun) {
           InAppReview.instance.requestReview();
         }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pp_467/core/extensions/theme_context_extension.dart';
+import 'package:pp_467/core/services/image_service.dart';
 import 'package:pp_467/core/ui_kit/custom_back_button.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:easy_stepper/easy_stepper.dart';
@@ -44,7 +45,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
 
   XFile? _image;
 
-  final List<Subtask> _subtasks = [
+  List<Subtask> _subtasks = [
     Subtask(
       uuid: const UuidV4().generate(),
       title: '',
@@ -53,7 +54,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
     ),
   ];
 
-  final List<Guest> _guests = [
+  List<Guest> _guests = [
     Guest(
       uuid: const UuidV4().generate(),
       name: '',
@@ -61,7 +62,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
     ),
   ];
 
-  final List<Expense> _expenses = [
+  List<Expense> _expenses = [
     Expense(
       uuid: const UuidV4().generate(),
       name: '',
@@ -73,6 +74,18 @@ class _NewEventScreenState extends State<NewEventScreen> {
   void initState() {
     super.initState();
     _pageController.addListener(listener);
+    final event = widget.event;
+    if (event != null) {
+      _titleController.text = event.title;
+      _locationController.text = event.location;
+      _descriptionController.text = event.description;
+      _dateTime = event.dateTime;
+      final path = context.read<ImageService>().loadImage(event.imagePath).path;
+      _image = XFile(path);
+      _subtasks = List.from(event.subtasks);
+      _guests = List.from(event.guests);
+      _expenses = List.from(event.expenses);
+    }
   }
 
   listener() => setState(() => _activeStep = _pageController.page!.round());
@@ -110,6 +123,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                     widget.event == null ? 'Add event' : 'Edit event',
                     style: context.text.bodyMedium,
                   ),
+                  centerTitle: true,
                 ),
                 body: Container(
                   decoration: BoxDecoration(
@@ -215,21 +229,37 @@ class _NewEventScreenState extends State<NewEventScreen> {
                             BudgetContent(
                               submitButtonTitle: 'Save',
                               submitButtonCallback: () {
-                                final event = Event(
-                                  uuid: const UuidV4().generate(),
-                                  title: _titleController.text,
-                                  dateTime: _dateTime,
-                                  location: _locationController.text,
-                                  description: _descriptionController.text,
-                                  imagePath: '',
-                                  subtasks: _subtasks,
-                                  guests: _guests,
-                                  expenses: _expenses,
-                                );
-                                context.read<EventCubit>().create(
-                                      event: event,
-                                      image: _image,
-                                    );
+                                if (widget.event == null) {
+                                  final event = Event(
+                                    uuid: const UuidV4().generate(),
+                                    title: _titleController.text,
+                                    dateTime: _dateTime,
+                                    location: _locationController.text,
+                                    description: _descriptionController.text,
+                                    imagePath: '',
+                                    subtasks: _subtasks,
+                                    guests: _guests,
+                                    expenses: _expenses,
+                                  );
+                                  context.read<EventCubit>().create(
+                                        event: event,
+                                        image: _image!,
+                                      );
+                                } else {
+                                  final event = widget.event!.copyWith(
+                                    title: _titleController.text,
+                                    dateTime: _dateTime,
+                                    location: _locationController.text,
+                                    description: _descriptionController.text,
+                                    subtasks: _subtasks,
+                                    guests: _guests,
+                                    expenses: _expenses,
+                                  );
+                                  context.read<EventCubit>().update(
+                                        event: event,
+                                        newImage: _image,
+                                      );
+                                }
                                 context.router.popForced();
                               },
                             ),

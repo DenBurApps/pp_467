@@ -31,13 +31,17 @@ class _ContactDialogState extends State<ContactDialog> {
       content: Column(
         children: [
           CupertinoTextField(
-            style: context.text.bodyMedium,
+            style: context.text.bodyLarge.copyWith(
+              color: context.colors.onSurface,
+            ),
             controller: subjectController,
             placeholder: 'Message subject',
           ),
           const SizedBox(height: 8),
           CupertinoTextField(
-            style: context.text.bodyMedium,
+            style: context.text.bodyMedium.copyWith(
+              color: context.colors.onSurface,
+            ),
             controller: textController,
             placeholder: 'Message text',
             maxLines: 4,

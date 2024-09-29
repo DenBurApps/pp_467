@@ -54,35 +54,36 @@ class ImageService {
 
   static Future<XFile?> pickImage(BuildContext context) async {
     return showCupertinoModalPopup<XFile?>(
-        context: context,
-        builder: (context) {
-          final router = context.router;
-          return CupertinoActionSheet(
-            actions: [
-              CupertinoActionSheetAction(
-                onPressed: () async {
-                  final ImagePicker picker = ImagePicker();
-                  final XFile? image =
-                      await picker.pickImage(source: ImageSource.camera);
-                  router.popForced(image);
-                },
-                child: const Text('Camera'),
-              ),
-              CupertinoActionSheetAction(
-                onPressed: () async {
-                  final ImagePicker picker = ImagePicker();
-                  final XFile? image =
-                      await picker.pickImage(source: ImageSource.gallery);
-                  router.popForced(image);
-                },
-                child: const Text('Photos'),
-              ),
-            ],
-            cancelButton: CupertinoActionSheetAction(
-              onPressed: () => context.router.popForced(),
-              child: const Text('Cancel'),
+      context: context,
+      builder: (context) {
+        final router = context.router;
+        return CupertinoActionSheet(
+          actions: [
+            CupertinoActionSheetAction(
+              onPressed: () async {
+                final ImagePicker picker = ImagePicker();
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.camera);
+                router.popForced(image);
+              },
+              child: const Text('Camera'),
             ),
-          );
-        });
+            CupertinoActionSheetAction(
+              onPressed: () async {
+                final ImagePicker picker = ImagePicker();
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.gallery);
+                router.popForced(image);
+              },
+              child: const Text('Photos'),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            onPressed: () => context.router.popForced(),
+            child: const Text('Cancel'),
+          ),
+        );
+      },
+    );
   }
 }

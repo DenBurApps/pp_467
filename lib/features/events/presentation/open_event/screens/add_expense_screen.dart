@@ -39,6 +39,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colors.surfaceBright,
       appBar: AppBar(
         leadingWidth: 20 + 24 + 20,
         leading: const CustomBackButton(),
@@ -46,11 +47,12 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           'Add expense',
           style: context.text.bodyMedium,
         ),
+        centerTitle: true,
       ),
       body: Container(
         margin: const EdgeInsets.only(top: 25),
         decoration: BoxDecoration(
-          color: context.colors.surface,
+          color: context.colors.surfaceDim,
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),

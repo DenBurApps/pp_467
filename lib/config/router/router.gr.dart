@@ -48,6 +48,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ArticleDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<ArticleDetailsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ArticleDetailsScreen(
+          key: args.key,
+          article: args.article,
+        ),
+      );
+    },
     ArticlesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -256,6 +266,44 @@ class AddSubtaskRouteArgs {
   @override
   String toString() {
     return 'AddSubtaskRouteArgs{key: $key, event: $event, subtask: $subtask}';
+  }
+}
+
+/// generated route for
+/// [ArticleDetailsScreen]
+class ArticleDetailsRoute extends PageRouteInfo<ArticleDetailsRouteArgs> {
+  ArticleDetailsRoute({
+    Key? key,
+    required Article article,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ArticleDetailsRoute.name,
+          args: ArticleDetailsRouteArgs(
+            key: key,
+            article: article,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ArticleDetailsRoute';
+
+  static const PageInfo<ArticleDetailsRouteArgs> page =
+      PageInfo<ArticleDetailsRouteArgs>(name);
+}
+
+class ArticleDetailsRouteArgs {
+  const ArticleDetailsRouteArgs({
+    this.key,
+    required this.article,
+  });
+
+  final Key? key;
+
+  final Article article;
+
+  @override
+  String toString() {
+    return 'ArticleDetailsRouteArgs{key: $key, article: $article}';
   }
 }
 

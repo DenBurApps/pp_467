@@ -27,18 +27,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final onboardingPages = <Widget>[
       Section(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
           children: [
-            Text(
-              'Welcome!',
-              style: context.text.displayLarge,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                'Welcome!',
+                style: context.text.displayLarge,
+              ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(Assets.images.onboarding.a1.path),
+                Image.asset(
+                  Assets.images.onboarding.a1.path,
+                  width: size.width,
+                ),
                 const SizedBox(height: 10),
                 Text(
                   'It is your perfect assistant for event planning. Manage your events easily and enjoyably with our simple tools!',
@@ -46,85 +53,94 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 85),
           ],
         ),
       ),
       Section(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
           children: [
-            Text(
-              'Key Features',
-              style: context.text.displayLarge,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                'Key Features',
+                style: context.text.displayLarge,
+              ),
             ),
-            Column(
-              children: [
-                Image.asset(Assets.images.onboarding.a2.path),
-                const SizedBox(height: 10),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '•',
-                      style: context.text.bodyLarge,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Create and manage events in a couple of clicks.',
+            Align(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    Assets.images.onboarding.a2.path,
+                    height: size.height * .4,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '•',
                         style: context.text.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '•',
-                      style: context.text.bodyLarge,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Plan tasks and keep track of their fulfillment.',
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          'Create and manage events in a couple of clicks.',
+                          style: context.text.bodyLarge,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '•',
                         style: context.text.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '•',
-                      style: context.text.bodyLarge,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Manage your guest list and rest assured that everything is under control.',
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          'Plan tasks and keep track of their fulfillment.',
+                          style: context.text.bodyLarge,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '•',
                         style: context.text.bodyLarge,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          'Manage your guest list and rest assured that everything is under control.',
+                          style: context.text.bodyLarge,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 85),
           ],
         ),
       ),
       Section(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
           children: [
-            Text(
-              'Let\'s get\nstarted!',
-              style: context.text.displayLarge,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                'Let\'s get\nstarted!',
+                style: context.text.displayLarge,
+                textAlign: TextAlign.center,
+              ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(Assets.images.onboarding.a3.path),
                 const SizedBox(height: 10),

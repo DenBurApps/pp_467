@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 import 'package:pp_467/core/services/image_service.dart';
 import 'package:pp_467/features/events/data/event_repo.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
@@ -18,13 +19,11 @@ class EventCubit extends Cubit<List<Event>> {
     readAll();
   }
 
-  Future<Event> create({required Event event, required XFile? image}) async {
+  Future<Event> create({required Event event, required XFile image}) async {
     String? imagePath;
 
-    if (image != null) {
-      imagePath = await imageService.saveImage(image);
-      event = event.copyWith(imagePath: imagePath ?? '');
-    }
+    imagePath = await imageService.saveImage(image);
+    event = event.copyWith(imagePath: imagePath ?? '');
 
     await repo.create(event);
     emit([...state, event]);
@@ -40,12 +39,10 @@ class EventCubit extends Cubit<List<Event>> {
     String? updatedImagePath = event.imagePath;
 
     if (newImage != null) {
-      // Delete old image
-      if (event.imagePath.isNotEmpty) {
+      if (event.imagePath != basename(newImage.path)) {
         await imageService.deleteImage(event.imagePath);
+        updatedImagePath = await imageService.saveImage(newImage);
       }
-      // Save new image
-      updatedImagePath = await imageService.saveImage(newImage);
     }
 
     event = event.copyWith(imagePath: updatedImagePath ?? '');

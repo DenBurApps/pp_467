@@ -18,6 +18,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/back.svg
   String get back => 'assets/icons/back.svg';
 
+  /// File path: assets/icons/backward.svg
+  String get backward => 'assets/icons/backward.svg';
+
   /// File path: assets/icons/calendar.svg
   String get calendar => 'assets/icons/calendar.svg';
 
@@ -42,6 +45,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/edit.svg
   String get edit => 'assets/icons/edit.svg';
 
+  /// File path: assets/icons/forward.svg
+  String get forward => 'assets/icons/forward.svg';
+
   /// File path: assets/icons/location.svg
   String get location => 'assets/icons/location.svg';
 
@@ -64,6 +70,7 @@ class $AssetsIconsGen {
   List<String> get values => [
         addRounded,
         back,
+        backward,
         calendar,
         camera,
         checkmark,
@@ -72,6 +79,7 @@ class $AssetsIconsGen {
         close,
         contactBook,
         edit,
+        forward,
         location,
         menu,
         more,

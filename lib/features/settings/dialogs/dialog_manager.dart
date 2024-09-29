@@ -93,7 +93,7 @@ class DialogManager {
           CupertinoDialogAction(
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: () => context.router.popForced(false),
           ),

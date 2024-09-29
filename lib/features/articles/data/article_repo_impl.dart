@@ -11,22 +11,37 @@ class ArticleRepoImpl implements ArticleRepo {
   @override
   Future<List<Article>> getAll() async {
     try {
-      final response = await dio.get(
-          '$apiUrl/everything?q=food&language=en&apiKey=18eda10535a840b89c9e79a4ff7d9b90');
+      final headers = {
+        'Content-Type': 'application/json',
+        'x-rapidapi-host': 'google-api31.p.rapidapi.com',
+        'x-rapidapi-key': '9af998eef9mshb85ffefb063e6b2p1f2bbajsn433e24a36cdd',
+      };
+
+      final data = {
+        'text':
+            'holiday party OR celebration OR festivity OR happy event -political -government -election',
+        'region': 'wt-wt',
+        'max_results': 25,
+      };
+
+      final response = await dio.post(
+        apiUrl,
+        data: data,
+        options: Options(headers: headers),
+      );
 
       if (response.statusCode == 200) {
-        final List<dynamic> articlesJson = response.data['articles'];
+        final List<dynamic> articlesJson = response.data['news'];
 
         final List<Article> articles = articlesJson
             .map((json) => Article.fromJson(json as Map<String, dynamic>))
             .toList();
-
         return articles;
       } else {
         throw Exception('Failed to load articles: ${response.statusCode}');
       }
     } catch (e) {
-      return [];
+      throw Exception('Failed to load articles: $e');
     }
   }
 }

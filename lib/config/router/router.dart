@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pp_467/features/articles/domain/entities/article/article.dart';
+import 'package:pp_467/features/articles/presentation/article_details_screen.dart';
 import 'package:pp_467/features/articles/presentation/articles_screen.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:pp_467/features/events/domain/entities/expense/expense.dart';
@@ -42,5 +44,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ArticlesRoute.page),
         AutoRoute(page: CalendarRoute.page),
         AutoRoute(page: NewEventRoute.page),
+        AutoRoute(page: ArticleDetailsRoute.page),
       ];
 }

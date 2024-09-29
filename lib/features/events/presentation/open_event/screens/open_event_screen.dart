@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
@@ -18,6 +17,7 @@ import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:pp_467/features/events/domain/st_mgmt/event_cubit.dart';
 import 'package:pp_467/features/events/presentation/open_event/cards/expense_card.dart';
 import 'package:pp_467/features/events/presentation/open_event/cards/guest_card.dart';
+import 'package:pp_467/features/events/presentation/open_event/screens/circular_progress_painter.dart';
 import 'package:pp_467/features/events/presentation/open_event/segment/open_event_segment.dart';
 import 'package:pp_467/features/events/presentation/open_event/cards/subtask_card.dart';
 import 'package:pp_467/features/settings/dialogs/dialog_manager.dart';
@@ -39,6 +39,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colors.surfaceBright,
       appBar: AppBar(
         leadingWidth: 20 + 24 + 20,
         leading: const CustomBackButton(),
@@ -51,11 +52,12 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
             itemBuilder: (context) => [
               PullDownMenuItem(
                 title: 'Edit',
-                iconWidget: SvgIcon(Assets.icons.edit),
-                onTap: () {},
-                // onTap: () => context.router.push(
-                //   NewEventRoute(event: widget.event),
-                // ),
+                iconWidget: SvgIcon(
+                  Assets.icons.edit,
+                  color: context.colors.onSurface,
+                ),
+                onTap: () =>
+                    context.router.push(NewEventRoute(event: widget.event)),
               ),
               PullDownMenuItem(
                 isDestructive: true,
@@ -79,7 +81,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
               child: SvgIcon(
                 Assets.icons.edit,
                 color: context.colors.onSurface,
-                side: 36,
+                side: 30,
               ),
             ),
           ),
@@ -89,7 +91,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
         clipBehavior: Clip.hardEdge,
         margin: const EdgeInsets.only(top: 25),
         decoration: BoxDecoration(
-          color: context.colors.surface,
+          color: context.colors.surfaceDim,
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),
@@ -100,12 +102,9 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
           if (event == null) {
             return const CupertinoActivityIndicator();
           }
-          final int totalSubtasks = event.subtasks.length;
-          final int completedSubtasks =
-              event.subtasks.where((e) => e.done).length;
-          final double progressPercentage =
-              totalSubtasks == 0 ? 0 : completedSubtasks / totalSubtasks;
-          final double sweepAngle = progressPercentage * 2 * pi;
+          final int total = event.subtasks.length;
+          final int completed = event.subtasks.where((e) => e.done).length;
+          final double progress = total == 0 ? 0 : completed / total;
           return CustomScrollView(
             slivers: [
               SliverAppBar(
@@ -115,7 +114,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
                 toolbarHeight: 0,
                 automaticallyImplyLeading: false,
                 flexibleSpace: Hero(
-                  tag: 'event ${event.uuid}',
+                  tag: event.uuid,
                   child: ClipRRect(
                     borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(20),
@@ -180,7 +179,7 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
                               WhiteBorderedChip(
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     SvgIcon(
                                       Assets.icons.location,
@@ -210,19 +209,16 @@ class _OpenEventScreenState extends State<OpenEventScreen> {
                               OpenEventSegment.subtasks => SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: CustomPaint(
-                                    // painter: PartialCircleBorderPainter(
-                                    //   borderColor: context.colors.primary,
-                                    //   borderWidth: 3,
-                                    //   startAngle: -pi / 2,
-                                    //   sweepAngle: sweepAngle,
-                                    // ),
+                                  child: CircularProgressIndicatorWidget(
+                                    progress: progress,
+                                    size: 50,
+                                    borderWidth: 3,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          '${(progressPercentage * 100).round()}%',
+                                          '${(progress * 100).round()}%',
                                           style: context.text.bodyMedium,
                                         ),
                                         Text(

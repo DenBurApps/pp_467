@@ -12,6 +12,7 @@ import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:pp_467/features/events/domain/st_mgmt/event_cubit.dart';
 import 'package:pp_467/features/events/presentation/black_chip.dart';
+import 'package:pp_467/features/events/presentation/event_card.dart';
 import 'package:pp_467/features/events/presentation/white_chip.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 
@@ -32,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: SafeArea(
+          bottom: false,
           child: Column(
             children: [
               const SizedBox(height: 20),
@@ -82,10 +84,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: AppBackground(
         child: SafeArea(
-          child: Section(
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Section(
                   child: Column(
                     children: [
                       const SizedBox(height: 30),
@@ -158,15 +160,18 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SliverPadding(
-                  padding: const EdgeInsets.only(top: 30),
-                  sliver: BlocBuilder<EventCubit, List<Event>>(
-                    builder: (context, state) {
-                      final events = state
-                          .where((e) => e.dateTime.isSameDate(DateTime.now()))
-                          .toList();
-                      if (events.isEmpty) {
-                        return SliverFillRemaining(
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(top: 15, bottom: 56),
+                sliver: BlocBuilder<EventCubit, List<Event>>(
+                  builder: (context, state) {
+                    final events = state
+                        .where((e) => e.dateTime.isSameDate(DateTime.now()))
+                        .toList();
+                    if (events.isEmpty) {
+                      return SliverPadding(
+                        padding: const EdgeInsets.only(top: 30),
+                        sliver: SliverFillRemaining(
                           hasScrollBody: false,
                           child: Column(
                             children: [
@@ -182,29 +187,32 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                        );
-                      }
-                      return SliverList.separated(
-                        itemBuilder: (context, index) {
-                          final event = events[index];
-                          return BlackChip(
+                        ),
+                      );
+                    }
+                    return SliverList.separated(
+                      itemBuilder: (context, index) {
+                        final event = events[index];
+                        return EventCard(
+                          event: event,
+                          bottomRight: Align(
                             child: Text(
-                              event.title,
+                              FormatHelper.formatTime(event.dateTime),
                               style: context.text.bodyMedium.copyWith(
-                                color: context.colors.onSurface,
+                                color: context.colors.onPrimary,
                               ),
                             ),
-                          );
-                        },
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 7),
-                        itemCount: events.length,
-                      );
-                    },
-                  ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 7),
+                      itemCount: events.length,
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
