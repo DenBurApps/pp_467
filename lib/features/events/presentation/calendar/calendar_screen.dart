@@ -9,7 +9,7 @@ import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
 import 'package:pp_467/features/events/domain/st_mgmt/event_cubit.dart';
-import 'package:pp_467/features/events/presentation/event_card.dart';
+import 'package:pp_467/features/events/presentation/common/event_card.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 
 @RoutePage()

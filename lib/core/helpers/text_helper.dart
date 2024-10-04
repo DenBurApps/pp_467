@@ -1,3 +1,4 @@
+// TODO change upon building
 class TextHelper {
   static const supportEmail = 'hoganbauer36@outlook.com';
   static const privacy = '''

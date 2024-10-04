@@ -5,8 +5,8 @@ import 'package:pp_467/core/ui_kit/custom_button.dart';
 import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/subtask/subtask.dart';
-import 'package:pp_467/features/events/presentation/new_event/tasks_setup/subtask_form_entry.dart';
-import 'package:pp_467/features/events/presentation/new_event/tasks_setup/tasks_setup_inh_widget.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/tasks_setup/subtask_form_entry.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/tasks_setup/tasks_setup_inh_widget.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 import 'package:uuid/v4.dart';
 

@@ -20,23 +20,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  late String link;
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // final DatabaseService databaseService = context.read<DatabaseService>();
-      // final RemoteConfigService remoteConfigService =
-      //     context.read<RemoteConfigService>();
-      // final bool usePrivacy = remoteConfigService.getBool(ConfigKey.usePrivacy);
-      // final bool noEntities = databaseService.transactions.isEmpty;
-      // link = remoteConfigService.getString(ConfigKey.link);
-      const usePrivacy = true;
       await _checkConnectivity(
         () async => await DialogManager.showNoInternetDialog(context),
       );
-      _navigate(usePrivacy: usePrivacy);
+      _navigate();
     });
   }
 
@@ -68,10 +59,15 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
-  Future<void> _navigate({
-    required bool usePrivacy,
-  }) async {
+  Future<void> _navigate() async {
     final router = context.router;
+    // final configService = context.read<ConfigService>();
+    // final usePrivacy = configService.usePrivacy;
+    // final link = configService.link;
+    // TODO uncomment upon building
+    late bool usePrivacy = true;
+    const link = 'https://yandex.ru';
+    // TODO delete upon building
     await IsFirstRun.isFirstRun().then(
       (isFirstRun) {
         if (isFirstRun) {

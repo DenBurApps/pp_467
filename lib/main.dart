@@ -19,9 +19,11 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  // await FirebaseService().init();
-  // final remoteConfigService = RemoteConfigService();
-  // await remoteConfigService.init();
+  // final configService = await ConfigService().init();
+  // WidgetsBinding.instance.addObserver(AppLifecycleListener(
+  //   onDetach: configService.closeClient,
+  // ));
+  // TODO uncomment upon building
 
   final databaseService = DatabaseService();
   await databaseService.init();
@@ -40,7 +42,8 @@ Future<void> main() async {
       providers: [
         RepositoryProvider(create: (context) => databaseService),
         RepositoryProvider(create: (context) => imageService),
-        // RepositoryProvider(create: (context) => remoteConfigService),
+        // RepositoryProvider(create: (context) => configService),
+        // TODO uncomment upon building
       ],
       child: MultiBlocProvider(
         providers: [

@@ -8,7 +8,7 @@ import 'package:pp_467/core/extensions/theme_context_extension.dart';
 import 'package:pp_467/core/services/image_service.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/event/event.dart';
-import 'package:pp_467/features/events/presentation/black_chip.dart';
+import 'package:pp_467/features/events/presentation/common/black_chip.dart';
 import 'package:pp_467/features/events/presentation/open_event/screens/circular_progress_painter.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 

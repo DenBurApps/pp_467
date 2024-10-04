@@ -6,7 +6,7 @@ import 'package:pp_467/core/services/image_service.dart';
 import 'package:pp_467/core/ui_kit/custom_button.dart';
 import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
-import 'package:pp_467/features/events/presentation/new_event/photo/photo_inh_widget.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/photo/photo_inh_widget.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 
 class PhotoContent extends StatelessWidget {

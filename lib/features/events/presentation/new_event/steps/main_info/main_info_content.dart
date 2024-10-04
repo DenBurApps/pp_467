@@ -7,7 +7,7 @@ import 'package:pp_467/core/ui_kit/custom_text_field.dart';
 import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/titled_section.dart';
 import 'package:pp_467/core/ui_kit/fake_textfield.dart';
-import 'package:pp_467/features/events/presentation/new_event/main_info/main_info_inh_widget.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/main_info/main_info_inh_widget.dart';
 
 class MainInfoContent extends StatefulWidget {
   final String submitButtonTitle;

@@ -5,8 +5,8 @@ import 'package:pp_467/core/ui_kit/custom_button.dart';
 import 'package:pp_467/core/ui_kit/section.dart';
 import 'package:pp_467/core/ui_kit/svg_icon.dart';
 import 'package:pp_467/features/events/domain/entities/guest/guest.dart';
-import 'package:pp_467/features/events/presentation/new_event/guests/guest_form_entry.dart';
-import 'package:pp_467/features/events/presentation/new_event/guests/guests_inh_widget.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/guests/guest_form_entry.dart';
+import 'package:pp_467/features/events/presentation/new_event/steps/guests/guests_inh_widget.dart';
 import 'package:pp_467/gen/assets.gen.dart';
 import 'package:uuid/v4.dart';
 
