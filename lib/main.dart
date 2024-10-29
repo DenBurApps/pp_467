@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:pp_467/application.dart';
+import 'package:pp_467/core/services/config_service.dart';
 import 'package:pp_467/core/services/database_service.dart';
 import 'package:pp_467/core/services/image_service.dart';
 import 'package:pp_467/features/articles/data/article_repo_impl.dart';
@@ -19,10 +20,10 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  // final configService = await ConfigService().init();
-  // WidgetsBinding.instance.addObserver(AppLifecycleListener(
-  //   onDetach: configService.closeClient,
-  // ));
+  final configService = await ConfigService().init();
+  WidgetsBinding.instance.addObserver(AppLifecycleListener(
+    onDetach: configService.closeClient,
+  ));
   // TODO uncomment upon building
 
   final databaseService = DatabaseService();
@@ -42,7 +43,7 @@ Future<void> main() async {
       providers: [
         RepositoryProvider(create: (context) => databaseService),
         RepositoryProvider(create: (context) => imageService),
-        // RepositoryProvider(create: (context) => configService),
+        RepositoryProvider(create: (context) => configService),
         // TODO uncomment upon building
       ],
       child: MultiBlocProvider(

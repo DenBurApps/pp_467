@@ -5,9 +5,11 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:is_first_run/is_first_run.dart';
+import 'package:pp_467/core/services/config_service.dart';
 import '../../../config/router/router.dart';
 import '../dialogs/dialog_manager.dart';
 
@@ -61,12 +63,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _navigate() async {
     final router = context.router;
-    // final configService = context.read<ConfigService>();
-    // final usePrivacy = configService.usePrivacy;
-    // final link = configService.link;
+    final configService = context.read<ConfigService>();
+    final usePrivacy = configService.usePrivacy;
+    final link = configService.link;
     // TODO uncomment upon building
-    late bool usePrivacy = true;
-    const link = 'https://yandex.ru';
+    // late bool usePrivacy = true;
+    // const link = 'https://yandex.ru';
     // TODO delete upon building
     await IsFirstRun.isFirstRun().then(
       (isFirstRun) {

@@ -2,11 +2,7 @@
 class TextHelper {
   static const supportEmail = 'hoganbauer36@outlook.com';
   static const privacy = '''
-Privacy Policy for ShopSaver: My List
-# **Privacy Policy**
-Last updated: September 16, 2024
-
-This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
+his Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
 We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the [Free Privacy Policy Generator](https://www.freeprivacypolicy.com/free-privacy-policy-generator/).
 ## **Interpretation and Definitions**
@@ -17,9 +13,9 @@ For the purposes of this Privacy Policy:
 
 - **Account** means a unique account created for You to access our Service or parts of our Service.
 - **Affiliate** means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
-- **Application** refers to ShopSaver: My List, the software program provided by the Company.
-- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to ShopSaver: My List.
-- **Country** refers to: California, United States
+- **Application** refers to Event Ease: Pro, the software program provided by the Company.
+- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Event Ease: Pro.
+- **Country** refers to: Alaska, United States
 - **Device** means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 - **Personal Data** is any information that relates to an identified or identifiable individual.
 - **Service** refers to the Application.
@@ -110,17 +106,10 @@ You are advised to review this Privacy Policy periodically for any changes. Chan
 ## **Contact Us**
 If you have any questions about this Privacy Policy, You can contact us:
 
-- By email: hoganbauer36@outlook.com
-
-Generated using [Free Privacy Policy Generator](https://www.freeprivacypolicy.com/free-privacy-policy-generator/)
-
+- By email: a.altaf.hussain.ahmad.ali@childtrust.space
 ''';
 
   static const terms = '''
-Terms and Conditions for ShopSaver: My List
-## **Terms and Conditions**
-Last updated: September 16, 2024
-
 Please read these terms and conditions carefully before using Our Service.
 ## **Interpretation and Definitions**
 ### **Interpretation**
@@ -128,11 +117,11 @@ The words of which the initial letter is capitalized have meanings defined under
 ### **Definitions**
 For the purposes of these Terms and Conditions:
 
-- **Application** means the software program provided by the Company downloaded by You on any electronic device, named ShopSaver: My List
+- **Application** means the software program provided by the Company downloaded by You on any electronic device, named Event Ease: Pro
 - **Application Store** means the digital distribution service operated and developed by Apple Inc. (Apple App Store) or Google Inc. (Google Play Store) in which the Application has been downloaded.
 - **Affiliate** means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
-- **Country** refers to: California, United States
-- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to ShopSaver: My List.
+- **Country** refers to: Alaska, United States
+- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Event Ease: Pro.
 - **Device** means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 - **Service** refers to the Application.
 - **Terms and Conditions** (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the [Free Terms and Conditions Generator](https://www.freeprivacypolicy.com/free-terms-and-conditions-generator/).
@@ -192,9 +181,6 @@ By continuing to access or use Our Service after those revisions become effectiv
 ## **Contact Us**
 If you have any questions about these Terms and Conditions, You can contact us:
 
-- By email: hoganbauer36@outlook.com
-
-Generated using [Free Privacy Policy Generator](https://www.freeprivacypolicy.com/free-privacy-policy-generator/)
-
+- By email: a.altaf.hussain.ahmad.ali@childtrust.space
 ''';
 }
